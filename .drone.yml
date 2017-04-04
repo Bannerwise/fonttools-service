@@ -1,10 +1,13 @@
 # CI Pipeline
 pipeline:
-  verify-service:
-    image: python:2
-    commands:
-      - sleep 10
-      - curl -s localhost:9097/health
+  test-full:
+  image: python:2
+  commands:
+    - pip install -r requirements.txt
+    - python app
+    - curl -s localhost:9097/health
+  when:
+    branch: [testing, staging, production]
   docker:
     image: plugins/docker
     username: bannerwiseci
