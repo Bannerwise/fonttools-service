@@ -1,13 +1,13 @@
 # CI Pipeline
 pipeline:
   test-full:
-  image: python:2
-  commands:
-    - pip install -r requirements.txt
-    - python app
-    - curl -s localhost:9097/health
-  when:
-    branch: [testing, staging, production]
+    image: python:2
+    commands:
+      - pip install -r requirements.txt
+      - python app
+      - curl -s localhost:9097/health
+    when:
+      branch: [testing, staging, production]
   docker:
     image: plugins/docker
     username: bannerwiseci
