@@ -5,6 +5,7 @@ pipeline:
     commands:
       - pip install -r requirements.txt
       - python app.py
+      - sleep 10
       - curl -s localhost:9097/health
     when:
       branch: [testing, staging, production]
