@@ -1,10 +1,10 @@
 # CI Pipeline
 pipeline:
-  test-full:
+  verify-service:
     image: python:2
     commands:
       - pip install -r requirements.txt
-      - python app
+      - python app.py
       - curl -s localhost:9097/health
     when:
       branch: [testing, staging, production]
