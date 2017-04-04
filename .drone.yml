@@ -1,0 +1,35 @@
+# CI Pipeline
+pipeline:
+  verify-service:
+    image: python:2
+    commands:
+      - sleep 10
+      - curl -s localhost:9097/health
+
+  docker:
+    image: plugins/docker
+    username: bannerwiseci
+    password: pwPNY33Vsc24b4rwuWR3DAMzxreLUUpO
+    email: ci@bannerwise.io
+    repo: bannerwise/font-service
+    tag:
+      - ${DRONE_BRANCH}-${DRONE_COMMIT}
+      - ${DRONE_BRANCH}
+    file: Dockerfile
+    insecure: false
+  deploy-to-deis:
+    image: bannerwise/deploy-to-deis
+    when:
+      branch: [testing, staging, production]
+    environment:
+      APP_NAME: font-service
+      IMAGE_NAME: bannerwise/font-service
+    auth_config:
+      username: bannerwiseci
+      password: pwPNY33Vsc24b4rwuWR3DAMzxreLUUpO
+      email: ci@bannerwise.io
+  slack:
+    image: plugins/slack
+    webhook: https://hooks.slack.com/services/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
+    channel: development
+    username: drone
