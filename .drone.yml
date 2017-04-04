@@ -5,7 +5,6 @@ pipeline:
     commands:
       - sleep 10
       - curl -s localhost:9097/health
-
   docker:
     image: plugins/docker
     username: bannerwiseci
