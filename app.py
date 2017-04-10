@@ -3,8 +3,10 @@ import convert
 import health
 from logger import log
 from flask import Flask, request, jsonify, make_response
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+CORS(app)
 
 log.info("starting subset service..")
 
