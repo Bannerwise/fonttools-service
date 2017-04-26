@@ -59,7 +59,7 @@ def convertFont(base64, type):
     #cleanup files
     cleanUp([tmpInputFontName, tmpOutputWoff, tmpOutputTtf])
 
-    return { 'woff': woffBase64.rstrip(), 'ttf': ttfBase64.rstrip() }
+    return { 'woff': woffBase64.replace('\n', ''), 'ttf': ttfBase64.replace('\n', '') }
 
 def otf_to_ttf(ttFont, post_format=POST_FORMAT, **kwargs):
     assert ttFont.sfntVersion == "OTTO"
