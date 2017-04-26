@@ -34,7 +34,7 @@ def subsetFont(base64, subset):
 
     save_font(font, tmpOutputFontName, options)
 
-    subsettedFont = open(tmpOutputFontName, "rb").read().encode("base64")
+    subsettedFont = 'data:;base64,' + open(tmpOutputFontName, "rb").read().encode("base64")
 
     os.unlink(tmpOutputFontName)
     os.unlink(tmpInputFontName)

@@ -53,8 +53,8 @@ def convertFont(base64, type):
     else:
         return { 'error': 'please give a valid type' }
 
-    ttfBase64 = toBase64(tmpOutputTtf)
-    woffBase64 = toBase64(tmpOutputWoff)
+    ttfBase64 = 'data:;base64,' + toBase64(tmpOutputTtf)
+    woffBase64 = 'data:;base64,' + toBase64(tmpOutputWoff)
 
     #cleanup files
     cleanUp([tmpInputFontName, tmpOutputWoff, tmpOutputTtf])
