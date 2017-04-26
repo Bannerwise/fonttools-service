@@ -17,6 +17,7 @@ def handleSubset():
         font = request.json['font']
         log.info("subsetting font..")
         subsetFont = subset.subsetFont(font, text)
+        print subsetFont
         return make_response(jsonify(subsetFont), 200)
     except:
         log.warn("subsetting font went wrong", request)
@@ -29,6 +30,7 @@ def handleConvert():
         font = request.json['font']
         log.info('conerting font..')
         converted = convert.convertFont(font, kind)
+        print converted
         return make_response(jsonify(converted), 200)
     except:
         log.warn("converting font went wrong")
