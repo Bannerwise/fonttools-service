@@ -15,10 +15,11 @@ def handleSubset():
     try:
         text = request.json['text']
         font = request.json['font']
-        fontName = request.json['fontName']
-        log.info('SUBSETTING:: fontName: ' + fontName + ' text: ' + text)
+        # fontName = request.json['fontName']
+        # log.info('SUBSETTING:: fontName: ' + fontName + ' text: ' + text)
+        log.info('SUBSETTING:: text: ' + text)
         print text
-        print fontName
+        # print fontName
         subsetFont = subset.subsetFont(font, text)
         print subsetFont
         return make_response(jsonify(subsetFont), 200)
