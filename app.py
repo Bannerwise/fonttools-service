@@ -10,6 +10,11 @@ CORS(app)
 
 log.info("starting subset service..")
 
+@app.before_request
+def log_request_info():
+    print request.headers
+    print request.get_data()
+
 @app.route("/subset", methods=["POST"])
 def handleSubset():
     try:
@@ -18,8 +23,6 @@ def handleSubset():
         # fontName = request.json['fontName']
         # log.info('SUBSETTING:: fontName: ' + fontName + ' text: ' + text)
         log.info('SUBSETTING:: text: ' + text)
-        print text
-        print font
         # print fontName
         subsetFont = subset.subsetFont(font, text)
         log.info('DONE SUBSETTING:: text: ' + text)

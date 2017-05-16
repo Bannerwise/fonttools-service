@@ -7,6 +7,7 @@ def tmpFileName(type):
     return ".tmp/" + str(uuid.uuid4()) + type
 
 def subsetFont(base64, subset):
+    print subset
     # tmp file names
     tmpInputFontName = tmpFileName(".ttf")
     tmpOutputFontName = tmpFileName(".woff")
@@ -38,5 +39,5 @@ def subsetFont(base64, subset):
 
     os.unlink(tmpOutputFontName)
     os.unlink(tmpInputFontName)
-    
+
     return { 'subset': subsettedFont.replace('\n', '') }
