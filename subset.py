@@ -7,7 +7,6 @@ def tmpFileName(type):
     return ".tmp/" + str(uuid.uuid4()) + type
 
 def subsetFont(base64, subset):
-    print subset
     # tmp file names
     tmpInputFontName = tmpFileName(".ttf")
     tmpOutputFontName = tmpFileName(".woff")
