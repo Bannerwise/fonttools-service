@@ -19,6 +19,7 @@ def handleSubset():
         # log.info('SUBSETTING:: fontName: ' + fontName + ' text: ' + text)
         log.info('SUBSETTING:: text: ' + text)
         print text
+        print font
         # print fontName
         subsetFont = subset.subsetFont(font, text)
         print subsetFont

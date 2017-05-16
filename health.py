@@ -10,12 +10,16 @@ def getHealth():
     cpu = psutil.cpu_percent(interval=1)
 
     data = {
-        'memory': {
-            'total': str(totalMemory) + ' MB' ,
-            'free': str(freeMemory) + ' MB'
+        'os': {
+            'hostname': socket.gethostname()
+            'memory': {
+                'total': str(totalMemory) + ' MB' ,
+                'free': str(freeMemory) + ' MB'
+            }
         },
-        'uptime': str(uptime.days) + " days",
-        'hostname': socket.gethostname()
+        'process': {
+            'uptime': str(uptime.days) + " days"
+        }
     }
 
     return data
