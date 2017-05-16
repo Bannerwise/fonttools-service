@@ -26,7 +26,7 @@ def handleSubset():
         print subsetFont
         return make_response(jsonify(subsetFont), 200)
     except:
-        log.error("subsetting font went wrong", text)
+        log.warn('subsetting font went wrong ' + text)
         return make_response(jsonify(error="subsetting went wrong"), 500)
 
 @app.route("/convert", methods=["POST"])
