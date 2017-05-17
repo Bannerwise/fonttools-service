@@ -1,5 +1,5 @@
-from logentries import LogentriesHandler
 import logging
+from logentries import LogentriesHandler
 from ConfigParser import SafeConfigParser
 
 config = SafeConfigParser()

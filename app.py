@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify, make_response
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, supports_credentials=True)
 
 log.info("STARTING SUBSETTING SERVICE")
 
@@ -60,4 +60,4 @@ def handleHealth():
     return make_response(jsonify(health.getHealth()), 200)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=9097, threaded=True)
+    app.run(host='127.0.0.1', port=9097, threaded=True)
