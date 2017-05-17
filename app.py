@@ -4,6 +4,7 @@ import health
 from logger import log
 from flask import Flask, request, jsonify, make_response
 from flask_cors import CORS, cross_origin
+from gevent.wsgi import WSGIServer
 
 app = Flask(__name__)
 CORS(app)
@@ -27,7 +28,7 @@ def handleSubset():
         log.info("DONE SUBSETTING:: text: " + text)
         return make_response(jsonify(subsetFont), 200)
     except:
-        log.warn("subsetting font went wrong " + text)
+        log.warn("subsetting font went wrong ")
         return make_response(jsonify(error="subsetting went wrong"), 500)
 
 @app.route("/convert", methods=["POST"])
@@ -47,4 +48,6 @@ def handleHealth():
     return make_response(jsonify(health.getHealth()), 200)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=9097, threaded=True)
+    server = WSGIServer(('', 9097), app)
+    server.serve_forever()
+    # app.run(host="0.0.0.0", port=9097, threaded=False)
