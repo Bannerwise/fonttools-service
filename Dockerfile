@@ -1,11 +1,18 @@
-FROM python:2
+FROM ubuntu:latest
+# ENV DEBIAN_FRONTEND noninteractive
 
-ADD . /app
+RUN \
+  apt-get update && \
+  apt-get -y upgrade && \
+  apt-get install -y python python-pip python-dev python-virtualenv gunicorn
 
-WORKDIR /app
-
-RUN pip install -r requirements.txt
+RUN mkdir -p /deploy/app
+COPY gunicorn_config.py /deploy/gunicorn_config.py
+COPY app /deploy/app
+RUN pip install -r /deploy/app/requirements.txt
+WORKDIR /deploy/app
 
 EXPOSE 9097
 
-CMD ["newrelic-admin", "run-program", "python", "app.py" ]
+# Start gunicorn
+CMD ["/usr/bin/gunicorn", "--config", "/deploy/gunicorn_config.py", "app:app"]
