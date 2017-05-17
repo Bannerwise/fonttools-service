@@ -10,11 +10,6 @@ CORS(app)
 
 log.info("STARTING FONT-SERVICE")
 
-@app.before_request
-def log_request_info():
-    print request.headers
-    print request.get_data()
-
 @app.after_request
 def after_request(response):
   response.headers.add("Access-Control-Allow-Origin", "*")
