@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 9097
 
-CMD [ "python", "app.py" ]
+CMD ["newrelic-admin", "run-program", "python", "app.py" ]
