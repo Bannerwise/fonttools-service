@@ -15,6 +15,13 @@ def log_request_info():
     print request.headers
     print request.get_data()
 
+@app.after_request
+def after_request(response):
+  response.headers.add('Access-Control-Allow-Origin', '*')
+  response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+  response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+  return response
+
 @app.route("/subset", methods=["POST"])
 def handleSubset():
     try:
@@ -23,8 +30,10 @@ def handleSubset():
         # fontName = request.json['fontName']
         # log.info('SUBSETTING:: fontName: ' + fontName + ' text: ' + text)
         log.info('SUBSETTING:: text: ' + text)
+        # print fontName
         subsetFont = subset.subsetFont(font, text)
         log.info('DONE SUBSETTING:: text: ' + text)
+        print subsetFont
         return make_response(jsonify(subsetFont), 200)
     except:
         log.warn('subsetting font went wrong ' + text)
