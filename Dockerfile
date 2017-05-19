@@ -15,4 +15,4 @@ WORKDIR /deploy/app
 EXPOSE 9097
 
 # Start gunicorn
-CMD ["/usr/bin/gunicorn", "--config", "/deploy/gunicorn_config.py", "app:app"]
+CMD ["newrelic-admin run-program", "/usr/bin/gunicorn", "--config", "/deploy/gunicorn_config.py", "app:app"]
