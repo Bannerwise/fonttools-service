@@ -48,6 +48,6 @@ def handleHealth():
     return make_response(jsonify(health.getHealth()), 200)
 
 if __name__ == "__main__":
-    server = WSGIServer(('', 9097), app)
-    server.serve_forever()
-    # app.run(host="0.0.0.0", port=9097, threaded=False)
+    # server = WSGIServer(('', 9097), app)
+    # server.serve_forever()
+    app.run(host="0.0.0.0", port=9097, threaded=False)
