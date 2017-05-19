@@ -26,6 +26,7 @@ FROM python:2
 RUN mkdir -p /app
 
 COPY newrelic.ini /app/newrelic.ini
+COPY settings.ini /app/settings.ini
 COPY gunicorn_config.py /app/gunicorn_config.py
 COPY requirements.txt /app/requirements.txt
 COPY app /app
