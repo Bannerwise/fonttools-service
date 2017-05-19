@@ -13,6 +13,6 @@ RUN pip install -r /deploy/app/requirements.txt
 WORKDIR /deploy/app
 
 EXPOSE 9097
-
+ENTRYPOINT ["/usr/local/bin/newrelic-admin", "run-program"]
 # Start gunicorn
-CMD ["newrelic-admin run-program", "/usr/bin/gunicorn", "--config", "/deploy/gunicorn_config.py", "app:app"]
+CMD ["/usr/bin/gunicorn", "--config", "/deploy/gunicorn_config.py", "app:app"]
