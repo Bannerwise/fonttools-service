@@ -116,4 +116,4 @@ def toBase64(filePath):
 
 # creates a tmp file name with uuid
 def tmpFileName(type):
-    return "app/tmp/" + str(uuid.uuid4()) + type
+    return os.getcwd() + "/tmp/" + str(uuid.uuid4()) + type

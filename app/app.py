@@ -25,7 +25,6 @@ def handleSubset():
         font = request.json["font"]
         log.info("SUBSETTING:: text: " + text)
         subsetFont = subset.subsetFont(font, text)
-        print subsetFont
         log.info("DONE SUBSETTING:: text: " + text)
         return make_response(jsonify(subsetFont), 200)
     except:
