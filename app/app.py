@@ -42,6 +42,10 @@ def handleConvert():
 def handleHealth():
     return make_response(jsonify(health.getHealth()), 200)
 
+@app.route("/test", methods=["POST"])
+def handleTest():
+    return make_response(jsonify({"hello": "world"}), 200)
+
 if __name__ == "__main__":
     # server = WSGIServer(('0.0.0.0', 9097), app)
     # server.serve_forever()
