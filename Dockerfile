@@ -14,6 +14,5 @@ WORKDIR /app
 
 EXPOSE 9097
 
-# ENTRYPOINT ["newrelic-admin", "run-program"]
 # Start gunicorn
 CMD ["newrelic-admin", "run-program", "gunicorn", "--config", "gunicorn_config.py", "app:app"]

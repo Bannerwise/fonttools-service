@@ -115,5 +115,5 @@ def toBase64(filePath):
     return open(filePath, "rb").read().encode("base64")
 
 # creates a tmp file name with uuid
-def tmpFileName(type):
-    return os.getcwd() + "/tmp/" + str(uuid.uuid4()) + type
+def tmpFileName(extension):
+    return os.getcwd() + "/tmp/" + str(uuid.uuid4()) + extension

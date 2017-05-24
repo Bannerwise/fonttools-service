@@ -4,19 +4,11 @@ import health
 from logger import log
 from flask import Flask, request, jsonify, make_response
 from flask_cors import CORS, cross_origin
-from gevent.wsgi import WSGIServer
 
 app = Flask(__name__)
 CORS(app)
 
 log.info("STARTING FONT-SERVICE")
-
-@app.after_request
-def after_request(response):
-  response.headers.add("Access-Control-Allow-Origin", "*")
-  response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
-  response.headers.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS")
-  return response
 
 @app.route("/subset", methods=["POST"])
 def handleSubset():
@@ -48,6 +40,4 @@ def handleHealth():
     return make_response(jsonify(health.getHealth()), 200)
 
 if __name__ == "__main__":
-    server = WSGIServer(('0.0.0.0', 9097), app)
-    server.serve_forever()
-    # app.run(host="0.0.0.0", port=9097, threaded=False)
+    app.run(host="0.0.0.0")

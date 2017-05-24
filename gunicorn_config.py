@@ -1,8 +1,8 @@
 bind = "0.0.0.0:9097"
-workers = 4
+workers = 1
 worker_class = 'sync'
 worker_connections = 1000
-timeout = 30
+timeout = 100
 keepalive = 2
 
 errorlog = '-'
