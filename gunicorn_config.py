@@ -1,11 +1,12 @@
 bind = "0.0.0.0:9097"
-workers = 2
-worker_class = 'gevent'
+workers = 4
+worker_class = 'sync'
 worker_connections = 1000
-timeout = 100
+timeout = 1000
 keepalive = 2
-limit_request_line = 0 #infinit
+limit_request_line = 0
 limit_request_field_size = 0
+
 errorlog = '-'
 loglevel = 'debug'
 accesslog = '-'
