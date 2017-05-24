@@ -1,6 +1,6 @@
 bind = "0.0.0.0:9097"
 workers = 1
-worker_class = 'sync'
+worker_class = 'gevent'
 worker_connections = 1000
 timeout = 100
 keepalive = 2
