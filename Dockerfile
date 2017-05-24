@@ -9,9 +9,9 @@ COPY requirements.txt /app/requirements.txt
 COPY app /app
 
 RUN pip install -r app/requirements.txt
+RUN mkdir -p /app/tmp
 
 WORKDIR /app
-RUN mkdir -p /tmp
 
 EXPOSE 9097
 
