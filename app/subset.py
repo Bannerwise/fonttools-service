@@ -45,5 +45,5 @@ def subsetFont(base64, subset):
     os.unlink(tmpOutputFontName)
     os.unlink(tmpInputFontName)
 
-    log.info("SUBSETTING:: return subset base64")
+    log.info("SUBSETTING:: returning subset base64")
     return { 'subset': subsettedFont.replace('\n', '') }

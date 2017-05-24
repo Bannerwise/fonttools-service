@@ -11,6 +11,7 @@ COPY app /app
 RUN pip install -r app/requirements.txt
 
 WORKDIR /app
+RUN mkdir -p /tmp
 
 EXPOSE 9097
 

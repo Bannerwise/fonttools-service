@@ -1,3 +1,4 @@
 *.pyc
 settings.ini
 .DS_Store
+app/tmp
