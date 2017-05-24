@@ -4,7 +4,7 @@ worker_class = 'sync'
 worker_connections = 1000
 timeout = 100
 keepalive = 2
-
+limit_request_line = 0 #infinit
 errorlog = '-'
 loglevel = 'debug'
 accesslog = '-'
