@@ -5,7 +5,7 @@ import uuid
 import os
 
 def tmpFileName(extension):
-    return os.getcwd() + "/tmp/" + str(uuid.uuid4()) + extension
+    return "./tmp/" + str(uuid.uuid4()) + extension
 
 def subsetFont(base64, subset):
     # tmp file names
