@@ -15,8 +15,6 @@ def subsetFont(base64, subset):
     log.info("TMP FILE:: tmpInputFontName: " + tmpInputFontName)
     log.info("TMP FILE:: tmpOutputFontName: " + tmpOutputFontName)
 
-    print tmpInputFontName
-    print tmpOutputFontName
     # remove data header from base64
     fontbase64 = base64.split(",")[1]
 
