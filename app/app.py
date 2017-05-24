@@ -4,9 +4,10 @@ import health
 from logger import log
 from flask import Flask, request, jsonify, make_response
 from flask_cors import CORS, cross_origin
+from gevent.wsgi import WSGIServer
 
 app = Flask(__name__)
-app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024 
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
 CORS(app)
 
 log.info("STARTING FONT-SERVICE")
@@ -41,4 +42,6 @@ def handleHealth():
     return make_response(jsonify(health.getHealth()), 200)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    server = WSGIServer(('0.0.0.0', 9097), app)
+    server.serve_forever()
+    # app.run(host="0.0.0.0")

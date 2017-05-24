@@ -1,5 +1,5 @@
 bind = "0.0.0.0:9097"
-workers = 1
+workers = 2
 worker_class = 'gevent'
 worker_connections = 1000
 timeout = 100
@@ -10,7 +10,6 @@ errorlog = '-'
 loglevel = 'debug'
 accesslog = '-'
 access_log_format = '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'
-
 
 def post_fork(server, worker):
     server.log.info("Worker spawned (pid: %s)", worker.pid)
