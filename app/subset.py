@@ -4,20 +4,24 @@ from logger import log
 import uuid
 import os
 
-def tmpFileName(type):
-    return os.getcwd() + "/tmp/" + str(uuid.uuid4()) + type
+def tmpFileName(extension):
+    return os.getcwd() + "/tmp/" + str(uuid.uuid4()) + extension
 
 def subsetFont(base64, subset):
     # tmp file names
     tmpInputFontName = tmpFileName(".ttf")
     tmpOutputFontName = tmpFileName(".woff")
+
     log.info("TMP FILE:: tmpInputFontName: " + tmpInputFontName)
     log.info("TMP FILE:: tmpOutputFontName: " + tmpOutputFontName)
+
+    print tmpInputFontName
+    print tmpOutputFontName
     # remove data header from base64
     fontbase64 = base64.split(",")[1]
 
     with open(tmpInputFontName, "wb") as f:
-        fontinput = f.write(fontbase64.decode('base64'))
+        fontinput = f.write(fontbase64.decode("base64"))
         f.close()
 
     # open the font with fontTools
@@ -41,5 +45,5 @@ def subsetFont(base64, subset):
     os.unlink(tmpOutputFontName)
     os.unlink(tmpInputFontName)
 
-    log.info("SUBSETTING:: returning subset base64")
+    log.info("SUBSETTING:: return subset base64")
     return { 'subset': subsettedFont.replace('\n', '') }
