@@ -25,6 +25,7 @@ def handleSubset():
         font = request.json["font"]
         log.info("SUBSETTING:: text: " + text)
         subsetFont = subset.subsetFont(font, text)
+        print subsetFont
         log.info("DONE SUBSETTING:: text: " + text)
         return make_response(jsonify(subsetFont), 200)
     except:
@@ -48,6 +49,6 @@ def handleHealth():
     return make_response(jsonify(health.getHealth()), 200)
 
 if __name__ == "__main__":
-    server = WSGIServer(('', 9097), app)
+    server = WSGIServer(('0.0.0.0', 9097), app)
     server.serve_forever()
     # app.run(host="0.0.0.0", port=9097, threaded=False)

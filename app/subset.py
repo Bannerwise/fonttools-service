@@ -4,20 +4,21 @@ import uuid
 import os
 
 def tmpFileName(type):
-    return ".tmp/" + str(uuid.uuid4()) + type
+    return "app/.tmp/" + str(uuid.uuid4()) + type
 
 def subsetFont(base64, subset):
     # tmp file names
     tmpInputFontName = tmpFileName(".ttf")
     tmpOutputFontName = tmpFileName(".woff")
-
+    print tmpInputFontName
+    print tmpOutputFontName
     # remove data header from base64
     fontbase64 = base64.split(",")[1]
 
     with open(tmpInputFontName, "wb") as f:
         fontinput = f.write(fontbase64.decode('base64'))
         f.close()
-
+    print fontinput
     # open the font with fontTools
     font = TTFont(tmpInputFontName)
 
