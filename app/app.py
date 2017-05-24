@@ -6,6 +6,7 @@ from flask import Flask, request, jsonify, make_response
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024 
 CORS(app)
 
 log.info("STARTING FONT-SERVICE")
